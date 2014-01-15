@@ -24,8 +24,9 @@
         <script type="text/javascript">
             document.addEventListener('deviceready', function(){
                 document.querySelector('button').onclick = function(){
-                    console.log('share', document.querySelector('img').src);
-                    window.plugins.socialsharing.share('I am testing Camshare. #testing', null, document.querySelector('img').src, null);
+                    var url = document.querySelector('img').src;
+                    console.log('share', url);
+                    window.plugins.socialsharing.share('I am testing Camshare. #testing', null, url, null);
                 };
 
                 var opt = {
