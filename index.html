@@ -8,16 +8,20 @@
     </head>
     <body>
         <h1>CamShare</h1>
-        <img width="100" height="100" />
+        <img width="100%" />
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript">
             document.addEventListener('deviceready', function(){
+                var opt = {
+                    encodingType: Camera.EncodingType.PNG,
+                    cameraDirection: navigator.camera.Direction.FRONT
+                };
                 navigator.camera.getPicture( function(data){
                     document.querySelector('img').src = data;
 
                 }, function(er){
                     alert(er);
-                });
+                }, opt);
             }, false);
         </script>
     </body>
