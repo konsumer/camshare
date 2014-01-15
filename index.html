@@ -23,23 +23,22 @@
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript">
             document.addEventListener('deviceready', function(){
+                document.querySelector('button').onclick = function(){
+                    console.log('share', document.querySelector('img').src);
+                    window.plugins.socialsharing.share('I am testing Camshare. #testing', null, document.querySelector('img').src, null);
+                };
+
                 var opt = {
                     encodingType: Camera.EncodingType.PNG,
                     cameraDirection: navigator.camera.Direction.FRONT
                 };
+
                 navigator.camera.getPicture( function(data){
                     document.querySelector('img').src = data;
-
                 }, function(er){
                     alert(er);
                 }, opt);
             }, false);
-
-            document.querySelector('button').onclick = function(){
-                console.log('share', document.querySelector('img').src);
-                window.plugins.socialsharing.share('I am testing Camshare. #testing', null, document.querySelector('img').src, null);
-            };
-
         </script>
     </body>
 </html>
