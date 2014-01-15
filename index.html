@@ -5,11 +5,19 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
         <title>CamShare</title>
+        <style>
+            body {
+                color: #fff;
+                background: #000;
+                font: 32px 'Helvetica Neue', Helvetica, Arial, Roboto;
+            }
+        </style>
     </head>
-    <body style="color: #fff; background: #000; font: 32px 'Helvetica Neue', Helvetica, Arial, Roboto; ">
+    <body>
         <h1>CamShare</h1>
-        <button onclick="window.plugins.socialsharing.share('#testing', null, document.querySelector('img').src, null)">share</button>
+        <button>share</button>
         <img width="100%" />
+
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript">
             document.addEventListener('deviceready', function(){
@@ -24,6 +32,12 @@
                     alert(er);
                 }, opt);
             }, false);
+
+            document.querySelector('button').onclick = function(){
+                console.log('share', document.querySelector('img').src);
+                window.plugins.socialsharing.share('I am testing Camshare. #testing', null, document.querySelector('img').src, null);
+            };
+
         </script>
     </body>
 </html>
