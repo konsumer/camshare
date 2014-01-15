@@ -34,6 +34,11 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        navigator.camera.getPicture( function(data){
+            document.querySelector('img').src = data;
+        }, function(er){
+            alert(er);
+        });
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
