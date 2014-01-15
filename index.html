@@ -9,33 +9,26 @@
             body {
                 color: #fff;
                 background: #000;
-            }
-            body, button {
                 font: 32px 'Helvetica Neue', Helvetica, Arial, Roboto;
             }
         </style>
     </head>
     <body>
         <h1>CamShare</h1>
-        <button>share</button>
         <img width="100%" />
 
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript">
             document.addEventListener('deviceready', function(){
-                document.querySelector('button').onclick = function(){
-                    var url = document.querySelector('img').src;
-                    console.log('share', url);
-                    window.plugins.socialsharing.share('I am testing Camshare. #testing', null, url, null);
-                };
-
                 var opt = {
                     encodingType: Camera.EncodingType.PNG,
                     cameraDirection: navigator.camera.Direction.FRONT
                 };
 
                 navigator.camera.getPicture( function(data){
-                    document.querySelector('img').src = data;
+                    var url = data;
+                    document.querySelector('img').src = url;
+                    window.plugins.socialsharing.share('I am testing Camshare. #testing', null, url, null);
                 }, function(er){
                     alert(er);
                 }, opt);
